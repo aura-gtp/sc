@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SC Eletrificações - Engenharia elétrica, projetos CELESC, instalações industriais e manutenção de redes em Chapecó e região.">
+    <title>SC Eletrificações - Engenharia Elétrica | Chapecó - SC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-yellow: #FFCC00;
+            --bg-black: #000000;
+            --bg-dark-gray: #0A0A0A;
+            --text-gray: #999999;
+            --text-white: #FFFFFF;
+            --font-titles: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-yellow);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo img { 
+            height: 65px; 
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        nav a:hover,
+        nav a.active { 
+            color: var(--bg-black);
+            background: var(--primary-yellow);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-yellow);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+       /* --- Hero Estático com Imagem de Fundo --- */
+.hero {
+    position: relative;
+    min-height: 58vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 5% 100px;
+
+    /* IMAGEM DE FUNDO */
+    background-image: url('images/capa1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-top: 4px solid var(--primary-yellow);
+    border-bottom: 4px solid var(--primary-yellow);
+}
+
+/* Overlay escuro */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.85)
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+}
+
+.hero h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: var(--primary-yellow);
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--text-white);
+    max-width: 850px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-titles);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--primary-yellow);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-white);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        /* --- Apresentação --- */
+        .apresentacao {
+            padding: 100px 5%;
+            background: var(--bg-black);
+        }
+
+        .apresentacao-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .apresentacao-content h2 {
+            font-family: var(--font-titles);
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .apresentacao-content p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* --- Serviços Grid --- */
+        .servicos {
+            padding: 100px 5%;
+            background: var(--bg-dark-gray);
+        }
+
+        .servicos h2 {
+            font-family: var(--font-titles);
+            font-size: 2.8rem;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 70px;
+            text-transform: uppercase;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .servico-card {
+            background: var(--bg-black);
+            border: 2px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.2);
+        }
+
+       .servico-icon {
+    margin-bottom: 25px;
+}
+
+.servico-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+
+        .servico-card h3 {
+            font-family: var(--font-titles);
+            color: var(--primary-yellow);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .servico-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .servico-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .servico-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .servico-card ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-yellow);
+            font-weight: 700;
+        }
+
+        .btn-servico {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-yellow);
+            border: 2px solid var(--primary-yellow);
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-servico:hover {
+            background: var(--primary-yellow);
+            color: var(--bg-black);
+        }
+
+        /* --- Diferenciais --- */
+        .diferenciais {
+            padding: 100px 5%;
+            background: var(--bg-black);
+        }
+
+        .diferenciais h2 {
+            font-family: var(--font-titles);
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 70px;
+            text-transform: uppercase;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: 35px;
+            background: var(--bg-dark-gray);
+            border: 2px solid #1a1a1a;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .diferencial-item:hover {
+            border-color: var(--primary-yellow);
+            transform: translateY(-5px);
+        }
+
+        .diferencial-icon {
+            font-size: 3.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 20px;
+        }
+
+        .diferencial-item h3 {
+            font-family: var(--font-titles);
+            color: var(--primary-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .diferencial-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- CTA Final --- */
+        .cta-final {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--bg-dark-gray) 0%, var(--bg-black) 100%);
+            text-align: center;
+            border-top: 2px solid var(--primary-yellow);
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+
+        .cta-final h2 {
+            font-family: var(--font-titles);
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .cta-final p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-yellow);
+            color: var(--bg-black);
+            padding: 20px 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-yellow);
+            border-radius: 2px;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--bg-black);
+            padding: 60px 5% 30px;
+            border-top: 3px solid var(--primary-yellow);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--primary-yellow);
+            font-family: var(--font-titles);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-yellow);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.7);
+        }
+
+        .whatsapp-float img {
+            width: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 10px 40px rgba(37, 211, 102, 0.8); }
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 968px) {
+            nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: rgba(0,0,0,0.98);
+                flex-direction: column;
+                width: 100%;
+                padding: 40px 5%;
+                transition: right 0.4s ease;
+                border-top: 2px solid var(--primary-yellow);
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                padding: 15px 0;
+                border-bottom: 1px solid #222;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .servicos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 85vh;
+                padding: 100px 5% 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float img {
+                width: 28px;
+            }
+        }
+    </style>
+</head>
+<!-- WhatsApp Flutuante -->
+<a href="https://wa.me/5549999264906?text=Olá!%20Gostaria%20de%20um%20orçamento"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Falar no WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+</a>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo3.jpg" alt="SC Eletrificações">
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="postes.html">Postes</a>
+            <a href="barracoes.html">Barracões</a>
+            <a href="eletrificacoes.html" class="active">Eletrificações</a>
+        </nav>
+    </header>
+
+    <!-- Hero com Background -->
+   <section class="hero">
+    <div class="hero-content">
+        <h1>SC Eletrificações</h1>
+        <p>
+            Soluções Completas em Engenharia Elétrica<br>
+            Projetos CELESC, Instalações Industriais e Manutenção de Redes
+        </p>
+
+        <a href="https://wa.me/5549999264906?text=Olá!%20Gostaria%20de%20falar%20com%20um%20engenheiro%20da%20SC"
+           class="btn-primary"
+           target="_blank">
+            Falar com Engenheiro
+        </a>
+    </div>
+</section>
+
+    <!-- Apresentação -->
+    <section class="apresentacao">
+        <div class="apresentacao-content">
+            <h2>Quem Somos</h2>
+            <p>A SC Eletrificações é especializada em soluções elétricas completas para indústrias, comércios, condomínios e loteamentos na região de Chapecó e Oeste de Santa Catarina.</p>
+            <p>Com uma equipe formada por engenheiros e técnicos altamente capacitados, oferecemos desde projetos elétricos complexos até a execução e manutenção de instalações de média e baixa tensão, sempre com foco em qualidade, segurança e satisfação do cliente.</p>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="servicos-grid">
+            
+            <!-- Instalações Elétricas -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+
+                <h3>Instalações Elétricas</h3>
+                <p>Instalações em média e baixa tensão para ambientes residenciais, comerciais e industriais.</p>
+                <ul>
+                    <li>Instalações residenciais</li>
+                    <li>Instalações comerciais</li>
+                    <li>Instalações industriais</li>
+                    <li>Retrofit elétrico</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Instalações%20Elétricas" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Projetos CELESC -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Projetos e Serviços CELESC</h3>
+                <p>Elaboração e execução de projetos para aprovação junto à CELESC.</p>
+                <ul>
+                    <li>Projetos de loteamentos</li>
+                    <li>QGM (Quadro de medição)</li>
+                    <li>Entrada de energia</li>
+                    <li>Extensão e melhoria de rede</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Projetos%20CELESC" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Iluminação -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Iluminação</h3>
+                <p>Projetos luminotécnicos e instalação de sistemas de iluminação eficientes.</p>
+                <ul>
+                    <li>Vias de condomínios</li>
+                    <li>Campos esportivos e quadras</li>
+                    <li>Praças públicas</li>
+                    <li>Iluminação decorativa</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Iluminação" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Subestações -->
+            <div class="servico-card">
+               <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Instalação de Subestações</h3>
+                <p>Montagem e manutenção de subestações aéreas e abrigadas.</p>
+                <ul>
+                    <li>Subestações até 3000 kVA</li>
+                    <li>Subestações aéreas</li>
+                    <li>Subestações abrigadas</li>
+                    <li>Manutenção preventiva</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Subestações" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Projetos Elétricos -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Projetos Elétricos</h3>
+                <p>Desenvolvimento completo de projetos elétricos com cálculos e dimensionamentos.</p>
+                <ul>
+                    <li>Projetos elétricos prediais</li>
+                    <li>Projetos industriais</li>
+                    <li>Projetos luminotécnicos</li>
+                    <li>Laudos e ARTs</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Projetos%20Elétricos" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Energia Solar -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Energia Solar Fotovoltaica</h3>
+                <p>Projetos, instalação e manutenção de sistemas de energia solar.</p>
+                <ul>
+                    <li>Projetos fotovoltaicos</li>
+                    <li>Instalação completa</li>
+                    <li>Homologação junto à CELESC</li>
+                    <li>Manutenção de sistemas</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Energia%20Solar" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Ensaios e Análises -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Ensaios e Análises</h3>
+                <p>Testes e medições para garantir segurança e eficiência das instalações.</p>
+                <ul>
+                    <li>SPDA (Para-raios)</li>
+                    <li>Termografia</li>
+                    <li>Medição de aterramento</li>
+                    <li>Análise de energia</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Ensaios%20e%20Análises" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Painéis Elétricos -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Montagem de Painéis Elétricos</h3>
+                <p>Fabricação de quadros elétricos sob medida com componentes certificados.</p>
+                <ul>
+                    <li>Quadros de medição CELESC</li>
+                    <li>QGP (Quadro Geral de Proteção)</li>
+                    <li>Quadros de comando</li>
+                    <li>Painéis de automação</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Painéis%20Elétricos" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+            <!-- Manutenção -->
+            <div class="servico-card">
+                <div class="servico-icon">
+    		<img src="images/logo.jpg" alt="Instalações Elétricas">
+		</div>
+                <h3>Manutenção Preventiva</h3>
+                <p>Manutenção programada para garantir continuidade e segurança energética.</p>
+                <ul>
+                    <li>Inspeções periódicas</li>
+                    <li>Manutenção de redes</li>
+                    <li>Manutenção de subestações</li>
+                    <li>Correções emergenciais</li>
+                </ul>
+                <a href="https://wa.me/5549999264906?text=Gostaria%20de%20orçamento%20para%20Manutenção" class="btn-servico" target="_blank">Solicitar Orçamento</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <h2>Por Que Escolher a SC Eletrificações?</h2>
+        <div class="diferenciais-grid">
+            
+            <div class="diferencial-item">
+                <div class="diferencial-icon">👷</div>
+                <h3>Equipe Qualificada</h3>
+                <p>Engenheiros e técnicos com vasta experiência e certificações na área elétrica.</p>
+            </div>
+
+            <div class="diferencial-item">
+                <div class="diferencial-icon">✓</div>
+                <h3>Qualidade Garantida</h3>
+                <p>Todas as instalações seguem rigorosamente as normas da ABNT e CELESC.</p>
+            </div>
+
+            <div class="diferencial-item">
+                <div class="diferencial-icon">⚡</div>
+                <h3>Agilidade</h3>
+                <p>Projetos executados com rapidez sem comprometer a qualidade e segurança.</p>
+            </div>
+
+            <div class="diferencial-item">
+                <div class="diferencial-icon">🛡️</div>
+                <h3>Segurança</h3>
+                <p>Compromisso com as melhores práticas de segurança em todas as etapas.</p>
+            </div>
+
+            <div class="diferencial-item">
+                <div class="diferencial-icon">📞</div>
+                <h3>Suporte Técnico</h3>
+                <p>Atendimento personalizado e suporte técnico contínuo aos nossos clientes.</p>
+            </div>
+
+            <div class="diferencial-item">
+                <div class="diferencial-icon">💼</div>
+                <h3>Experiência Regional</h3>
+                <p>Mais de 20 anos atendendo Chapecó e região com excelência.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>Precisa de uma Solução Elétrica?</h2>
+        <p>Entre em contato com nossa equipe de engenharia e receba uma consultoria técnica especializada para seu projeto. Atendemos toda região Oeste de Santa Catarina com qualidade e compromisso.</p>
+        <a href="https://wa.me/5549999264906?text=Olá!%20Gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20meu%20projeto" class="btn-primary" target="_blank">Falar com Engenheiro Agora</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>SC Eletrificações</h3>
+                <p>Soluções completas em engenharia elétrica há mais de 20 anos em Chapecó e região Oeste de Santa Catarina.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p><strong>Fone:</strong> (49) 3329-2240</p>
+                <p><strong>WhatsApp:</strong> (49) 99926-4906</p>
+                <p><strong>E-mail:</strong> contato@scpostes.com.br
